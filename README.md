@@ -45,15 +45,15 @@ We included the plot below to show the various parts of speech and other review 
 <img src="https://github.com/rylewww/Phase4Project/blob/master/images/pos.png" >
 
 # Vectorizing & Modeling 
-In order for our model to be able to interpret the review data we needed to vectorize our processed reviews. We used the TF-IDF vectorizer which not only takes into account how frequent a word appears in a document, but also how unqiue the word is in the overall corpus. 
+In order for our model to be able to interpret the review data we needed to vectorize our processed reviews. We used the TF-IDF vectorizer which not only takes into account how frequent a word appears in a document, but also how unqiue the word is in the overall corpus. We set our paramters to only include words that appear in at least 5% and max 90% of the documents in the corpus.
 
 After vectorization, we fit several different models to evaluate and compare which one outputs the highest accuracy & F-1 score. In order to accurately compare each model against one another, we performed a grid-search to determine the optimal hyperparameters for each model. Our results are as follows:
 
 <img src="https://github.com/rylewww/Phase4Project/blob/master/images/models.png" >
 
 Per the above, our top three models were:
-* Logistic Regression
-* XGBoost
+* Logistic Regression w/ PCA
+* Logistic Regression w/o PCA
 * LightGBM
 
 Confusion matrices for these three models are below:
@@ -61,7 +61,7 @@ Confusion matrices for these three models are below:
 <img src="https://github.com/rylewww/Phase4Project/blob/master/images/confusion.png" >
 
 # Conclusion 
-Our logistic regression model did the best at identifying the 'poor' reviews, whereas 'average' and 'excellent' were relatively similar across the three models. Therefore, the logistic regression model was our final model as it also has both the highest accuracy and F-1 scores.
+Our logistic regression with PCA model did the best at identifying the 'poor' reviews, whereas 'average' and 'excellent' were relatively similar across the three models. Therefore, the logistic regression model using PCA was our final model as it also has both the highest accuracy and F-1 scores and was not overfit to our training data.
 
 # Next Steps
 * Include exogenous variables (e.i. sentence length & subjectivity value)
@@ -81,6 +81,7 @@ Our logistic regression model did the best at identifying the 'poor' reviews, wh
 ├── Notebooks
 │   └── Data_Analysis.ipynb
 │   └── Raw_Notebook.ipynb
+│   └── Draft.ipynb
 ├── README.md
 ├── Final.ipynb
 └── Tripadvisor_NLP.pdf
